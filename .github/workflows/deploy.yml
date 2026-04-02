@@ -2,8 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"] # Runs every time you push to main
 
 permissions:
   contents: read
@@ -18,13 +17,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Pages
-        uses: actions/config-pages@v4
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './clinsdmaliakkal-1@mulearn/task-3'
+          # This points to where your index.html is. 
+          # If it's in a subfolder like task-3, change path to: path: 'task-3'
+          path: '.' 
 
-      - name: Deploy to Github Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4 
